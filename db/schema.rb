@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_210808) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
-    t.boolean "wet?"
+    t.boolean "wet"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

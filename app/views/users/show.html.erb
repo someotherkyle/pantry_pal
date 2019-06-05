@@ -1,0 +1,7 @@
+<p>Which Pantry would you like to see? Choose none to create a new Pantry.</p>
+<%=form_for(@user) do |f|%>
+  <%=f.label :pantry%>
+  <%=f.collection_select(:pantry_ids, @user.pantries, :id, :name)%>
+  <%=f.submit "Select"%>
+<%end%>
+
