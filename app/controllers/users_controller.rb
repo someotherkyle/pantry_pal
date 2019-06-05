@@ -17,6 +17,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: session[:user_id])
+    if @user.pantries.empty?
+      redirect_to new_pantry_path
+    end
   end
 
   private
