@@ -1,4 +1,5 @@
 class AvailableIngredientsController < ApplicationController
+  before_action :require_login
 
   def create
     AvailableIngredient.create(available_params)

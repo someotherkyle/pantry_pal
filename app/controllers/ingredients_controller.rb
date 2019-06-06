@@ -1,4 +1,5 @@
 class IngredientsController < ApplicationController
+  before_action :require_login
   def new
     @ingredient = Ingredient.new
   end
