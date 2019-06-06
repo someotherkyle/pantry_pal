@@ -1,0 +1,13 @@
+<!--Convert to form_tag-->
+<%=form_tag pantries_path do%>
+  <%=text_field_tag :location%>
+  <%@ingredients.each do |ing|%>
+    <%=ing.name%>
+    <%=hidden_field_tag :ingredient[id]%>
+    <%=text_field_tag%>
+    <%if ing.wet%>
+      <%=collection_select(:ingredient, :unit, @wet
+    <!-- PASS INGREDIENT ID, add fields for QTY and UNIT -->
+  <%end%>
+<%end%>
+<%=link_to "Add Ingredient", new_ingredient_path%>

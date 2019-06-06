@@ -1,8 +1,5 @@
-<%=form_for(@pantry) do |f|%>
-  <!-- display all ingredients with ability to input quantity and units -->
-  <%@ingredients.each do |ing|%>
-    <%=ing.name%>
-    <!-- PASS INGREDIENT ID, add fields for QTY and UNIT -->
-  <%end%>
+<%=form_for @pantry do |f|%>
+  <%=f.label :location%>
+  <%=f.text_field :location%>
+  <%=f.submit%>
 <%end%>
-<%=link_to "Add Ingredient", new_ingredient_path%>
