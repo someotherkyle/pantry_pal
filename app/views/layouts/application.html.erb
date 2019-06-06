@@ -18,6 +18,9 @@
         <%=link_to "Sign Out", logout_path, method: 'delete'%>
       <%end%>
       <%=link_to "Home", root_url%>
+      <%if current_user%>
+        <%=link_to "Your Pantries", user_path(current_user)%>
+      <%end%>
     </div>
     <%= yield %>
   </body>

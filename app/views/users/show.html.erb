@@ -1,4 +1,4 @@
 <p>Which Pantry would you like to see?</p>
-<%=@user.pantries.each do |pantry|%>
-  <%=link_to "#{pantry.location}", pantry_path(pantry)%>
+<%@pantries.each do |pantry|%>
+  <%=link_to pantry.location, pantry_path(pantry)%>
 <%end%>

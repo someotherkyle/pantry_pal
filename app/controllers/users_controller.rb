@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     if @user.pantries.empty?
       redirect_to new_pantry_path
     end
+    @pantries = @user.pantries
   end
 
   private

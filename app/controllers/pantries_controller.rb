@@ -5,8 +5,6 @@ class PantriesController < ApplicationController
   end
 
   def edit
-    @dry = ['teaspoon', 'tablespoon', 'cup']
-    @wet = ['fluid ounce', 'cup', 'pint', 'quart', 'gallon']
     @ingredients = Ingredient.all
   end
 

@@ -5,6 +5,7 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.create(ingredient_params)
+    redirect_to user_path(current_user)
   end
 
   private
