@@ -6,7 +6,8 @@ class PantriesController < ApplicationController
 
   def edit
     @pantry = Pantry.find_by(id: params[:id])
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.all.order(:name)
+    @available = @pantry.available_ingredients.build
   end
 
   def create
@@ -20,18 +21,9 @@ class PantriesController < ApplicationController
     @pantry = Pantry.find_by(id: params[:id])
   end
 
-  def quantify
-    avail = AvailableIngredient.create(available_params)
-    redirect_to edit_pantry_path(params[:ingredient][:pantry_id])
-  end
-
   private
 
     def pantry_params
       params.require(:pantry).permit(:location)
-    end
-
-    def available_params
-      params.require(:ingredient).permit(:ingredient_id, :quantity, :pantry_id, :unit)
     end
 end
