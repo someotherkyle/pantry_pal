@@ -1,25 +1,26 @@
-<%=form_tag pantries_path do%>
-  <p>Please update the quantites you have on hand.</p>
-  <%@ingredients.each do |ing|%>
+<p>Please update the quantites you have on hand.</p>
+<%@ingredients.each do |ing|%>
+  <%=form_tag "/pantry/ingredient/#{ing.id}" do%>
     <%=ing.name%>
-    <%=hidden_field_tag :"ingredient[id]", ing.id%>
+    <%=hidden_field_tag :"ingredient[pantry_id]", @pantry.id%>
+    <%=hidden_field_tag :"ingredient[ingredient_id]", ing.id%>
     <%=text_field_tag :"ingredient[quantity]"%>
     <%if ing.wet%>
       <%=select_tag :"ingredient[unit]", raw("<option>Fluid Oz</option>
                                <option>Cup</option>
                                <option>Pint</option>
                                <option>Quart</option>
-                               <option>Gallon</option>")%>
-      <br>
+                               <option>Gallon</option>
+                               <option>Other</option>")%>
     <%else%>
       <%=select_tag :"ingredient[unit]", raw("<option>Teaspoon</option>
                                 <option>Tablespoon</option>
-                                <option>Cup</option>")%>
-      <br>
+                                <option>Cup</option>
+                                <option>Other</option>")%>
     <%end%>
-  <%end%>
-  <br>
   <%=submit_tag%>
+  <br>
+  <%end%>
 <%end%>
 <br>
 <%=link_to "Add Ingredient", new_ingredient_path%>

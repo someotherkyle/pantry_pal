@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :edit, :destroy]
   resources :pantries, only: [:new, :create, :show, :edit, :destroy]
   resources :ingredients, only: [:new, :create]
+  post '/pantry/ingredient/:id', to: 'pantries#quantify'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
