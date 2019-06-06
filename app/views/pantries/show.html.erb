@@ -13,7 +13,7 @@
     </tr>
   <%end%>
 </table>
-<%=link_to "Edit Pantry", edit_pantry_path(@pantry)%>
+<%=link_to "Edit Pantry", edit_user_pantry_path(current_user, @pantry)%>
 <p>recipes available with ingredients on hand</p>
 <p>add recipe link</p>
 <p>all recipes</p>

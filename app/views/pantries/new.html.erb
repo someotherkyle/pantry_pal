@@ -1,4 +1,4 @@
-<%=form_for @pantry do |f|%>
+<%=form_for @pantry, url: user_pantries_path do |f|%>
   <%=f.label :location%>
   <%=f.text_field :location%>
   <%=f.submit%>

@@ -3,7 +3,7 @@ class AvailableIngredientsController < ApplicationController
 
   def create
     AvailableIngredient.create(available_params)
-    redirect_to pantry_path(params[:available_ingredient][:pantry_id])
+    redirect_to user_pantry_path(current_user, params[:available_ingredient][:pantry_id])
   end
 
   private
