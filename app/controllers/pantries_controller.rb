@@ -6,7 +6,7 @@ class PantriesController < ApplicationController
 
   def edit
     @pantry = Pantry.find_by(id: params[:id])
-    @ingredients = Ingredient.all.order(:name)
+    @ingredients = Ingredient.sorted_ingredients
     @available = @pantry.available_ingredients.build
   end
 
