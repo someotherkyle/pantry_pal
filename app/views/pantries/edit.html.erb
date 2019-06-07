@@ -1,7 +1,14 @@
+<%if @available.errors.any?%>
+  <div class='fields_with_errors'>
+    <%@available.errors.full_messages.each do |msg|%>
+      <%=msg%>
+    <%end%>
+  </div>
+<%end%>
 <p>Please update the quantites you have on hand.</p>
 <%=form_for(@available) do |f|%>
   <%=f.collection_select(:ingredient_id, @ingredients, :id, :name)%>
-  <%=hidden_field_tag :"available_ingredient[pantry_id]", @pantry.id%>
+  <%=hidden_field_tag :"available_ingredient[pantry_id]", params[:id]%>
   <%=text_field_tag :"available_ingredient[quantity]"%>
   <%=select_tag :"available_ingredient[unit]", raw("<option>Fluid Oz</option>
                              <option>Cup</option>

@@ -11,11 +11,10 @@ class PantriesController < ApplicationController
   end
 
   def create
-    pantry = Pantry.new(pantry_params)
-    pantry.user_id = current_user.id
-    if pantry.valid?
-      pantry.save
-      redirect_to user_pantry_path(current_user, pantry)
+    @pantry = Pantry.new(pantry_params)
+    @pantry.user_id = current_user.id
+    if @pantry.save
+      redirect_to user_pantry_path(current_user, @pantry)
     else
       render :new
     end

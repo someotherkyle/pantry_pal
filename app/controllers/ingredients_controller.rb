@@ -5,8 +5,12 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    @ingredient = Ingredient.create(ingredient_params)
-    redirect_to user_path(current_user)
+    @ingredient = Ingredient.new(ingredient_params)
+    if @ingredient.save
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
 
   private
