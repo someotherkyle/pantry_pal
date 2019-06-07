@@ -14,6 +14,8 @@
   <%end%>
 </table>
 <%=link_to "Edit Pantry", edit_user_pantry_path(current_user, @pantry)%>
-<p>recipes available with ingredients on hand</p>
-<p>add recipe link</p>
-<p>all recipes</p>
+<br>
+<%=link_to "Add Recipe", new_recipe_path%><br><br>
+<%Recipe.all.each do |rec|%>
+  <%=link_to rec.name, recipe_path(rec)%><br>
+<%end%>

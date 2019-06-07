@@ -1,4 +1,4 @@
-class RequiredIngredients < ApplicationRecord
+class RequiredIngredient < ApplicationRecord
   belongs_to :recipe
   belongs_to :ingredient
   validates :recipe_id, :ingredient_id, :quantity, :unit, presence: true

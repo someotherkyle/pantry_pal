@@ -7,14 +7,16 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find_by(id: params[:id])
     @ingredients = Ingredient.all.order(:name)
-    @available = @recipe.required_ingredients.build
+    @required = @recipe.required_ingredients.build
   end
 
   def create
-    recipe = Recipe.new(recipe_params)
-    recipe.user_id = current_user.id
-    recipe.save
-    redirect_to recipe_path(recipe)
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      redirect_to recipe_path(@recipe)
+    else
+      render :new
+    end
   end
 
   def show
@@ -24,6 +26,6 @@ class RecipesController < ApplicationController
   private
 
     def recipe_params
-      params.require(:recipe).permit(:location)
+      params.require(:recipe).permit(:name, :instructions)
     end
 end

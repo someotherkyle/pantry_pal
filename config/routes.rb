@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :recipes, only: [:new, :create, :show, :edit, :destroy]
   resources :ingredients, only: [:new, :create]
   resources :available_ingredients, only: [:create]
+  resources :required_ingredients, only: [:create]
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
