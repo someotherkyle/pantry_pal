@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :ingredients, only: [:new, :create]
   resources :available_ingredients, only: [:create]
   resources :required_ingredients, only: [:create]
-  get '/auth/:provider/callback', to: 'users#show'
+  get '/auth/:provider/callback', to: 'sesssions#create'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
