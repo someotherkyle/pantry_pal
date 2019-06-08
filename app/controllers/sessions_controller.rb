@@ -7,7 +7,12 @@ class SessionsController < ApplicationController
       if user = User.find_by(email: auth_hash["info"]["email"])
         session[:user_id] = user.id
       else
-
+        user = User.new(email: auth_hash['info']['email'], password: SecureRandom.hex, name: auth_hash['info']['name'])
+        if user.save
+          session[:user_id] = user.id
+        else
+          raise users.errors.full_messages.inspect
+        end
       end
     else
       user = User.find_by(email: params[:email])
