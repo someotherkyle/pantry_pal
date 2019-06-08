@@ -6,10 +6,12 @@ class SessionsController < ApplicationController
     if auth_hash = request.env["omniauth.auth"]
       if user = User.find_by(email: auth_hash["info"]["email"])
         session[:user_id] = user.id
+        redirect_to user_path(user)
       else
         user = User.new(email: auth_hash['info']['email'], password: SecureRandom.hex, name: auth_hash['info']['name'])
         if user.save
           session[:user_id] = user.id
+          redirect_to user_path(user)
         else
           raise users.errors.full_messages.inspect
         end
